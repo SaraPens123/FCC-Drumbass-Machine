@@ -6,35 +6,6 @@ function App() {
 const [activeKey, setActiveKey] = useState('')
 const [activeName, setActiveName] = useState('')
 
-
-useEffect(() => {
-    document.addEventListener('keydown', (event) => {
-     // const char = event.key.toUpperCase()
-     // for(let i=0; i < drumPads.length; i++) {
-     //    let current = drumPads[i] 
-     //    if (char === current.text) {
-     //      playSound(char, current.name)
-     //    }
-     // }
-
-     // const char = event.key.toUpperCase()
-     // for (let current of drumPads) {
-     //     if(char === current.text) {
-     //       playSound(char, current.name)
-     //     }
-     // }
-    
-    const char = event.key.toUpperCase()
-    drumPads.forEach((current) => {
-        if (char === current.text){
-          playSound(char, current.name)
-        }
-    })
-
-    })
-}, [])
-
-
 const drumPads = [
   {
     keyCode: 81,
@@ -92,6 +63,33 @@ const drumPads = [
   }
 ];
 
+useEffect(() => {
+    document.addEventListener('keydown', (event) => {
+     // const char = event.key.toUpperCase()
+     // for(let i=0; i < drumPads.length; i++) {
+     //    let current = drumPads[i] 
+     //    if (char === current.text) {
+     //      playSound(char, current.name)
+     //    }
+     // }
+
+     // const char = event.key.toUpperCase()
+     // for (let current of drumPads) {
+     //     if(char === current.text) {
+     //       playSound(char, current.name)
+     //     }
+     // }
+    
+    const char = event.key.toUpperCase()
+    this.drumPads.forEach((current) => {
+        if (char === current.text){
+          playSound(char, current.name)
+        }
+    })
+
+    })
+}, [])
+
 function playSound(selector, name) {
   const audio = document.getElementById(selector)
   audio.play()
@@ -104,7 +102,7 @@ function playSound(selector, name) {
         <div id="drum-machine" className="machine">
             <div className="display-container">
               <div id="display" className="display-drum">{activeKey}</div>
-              <img src="https://png.pngtree.com/png-clipart/20230929/original/pngtree-drum-drum-icon-in-the-middle-round-circle-vector-png-image_13012636.png" className="drum-image"></img>
+              <img alt="" src="https://png.pngtree.com/png-clipart/20230929/original/pngtree-drum-drum-icon-in-the-middle-round-circle-vector-png-image_13012636.png" className="drum-image"></img>
               <div className="display-name">{activeName}</div>
             </div>
             <div className="drum-pads">
