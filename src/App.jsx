@@ -1,11 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 
-function App() {
-
-const [activeKey, setActiveKey] = useState('')
-const [activeName, setActiveName] = useState('')
-
 const drumPads = [
   {
     keyCode: 81,
@@ -63,6 +58,11 @@ const drumPads = [
   }
 ];
 
+function App() {
+
+const [activeKey, setActiveKey] = useState('')
+const [activeName, setActiveName] = useState('')
+
 useEffect(() => {
     document.addEventListener('keydown', (event) => {
      // const char = event.key.toUpperCase()
@@ -81,7 +81,7 @@ useEffect(() => {
      // }
     
     const char = event.key.toUpperCase()
-    this.drumPads.forEach((current) => {
+    drumPads.forEach((current) => {
         if (char === current.text){
           playSound(char, current.name)
         }
